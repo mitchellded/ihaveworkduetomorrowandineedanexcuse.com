@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>I Have Work Due Tomorrow and I Need an Excuse</title>
+  <!-- your CSS styles here -->
+</head>
+<body>
+  <!-- your page content here -->
+  <h1>Hello, this is your excuse generator website!</h1>
+  <!-- your script here -->
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>I Have Work Due Tomorrow and I Need an Excuse</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f4f9;
+    margin: 0; padding: 0;
+    display: flex; flex-direction: column; align-items: center;
+    min-height: 100vh;
+    color: #222;
+  }
+  header {
+    background: #4a90e2;
+    width: 100%;
+    padding: 1.5rem 0;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1.8rem;
+  }
+  main {
+    max-width: 480px;
+    width: 90%;
+    background: white;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgb(0 0 0 / 0.1);
+  }
+  label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: 600;
+  }
+  select, button {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1.5px solid #ccc;
+  }
+  button {
+    background: #4a90e2;
+    color: white;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    margin-top: 2rem;
+    transition: background 0.3s ease;
+  }
+  button:hover {
+    background: #357ABD;
+  }
+  #output {
+    margin-top: 2rem;
+    background: #e9f0fe;
+    padding: 1.3rem;
+    border-radius: 6px;
+    min-height: 100px;
+    white-space: pre-wrap;
+    font-style: italic;
+  }
+  footer {
+    margin-top: auto;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  @media(max-width: 500px) {
+    main {
+      margin: 1rem 1rem 2rem;
+      padding: 1.5rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  I Have Work Due Tomorrow and I Need an Excuse
+</header>
+
+<main>
+  <label for="excuseType">What do you need an excuse for?</label>
+  <select id="excuseType">
+    <option value="missed_homework">Missed Homework</option>
+    <option value="missed_class">Missed Class</option>
+    <option value="late_submission">Late Submission</option>
+    <option value="group_member_didnt_work">Group Member Didn’t Work</option>
+    <option value="sick">Feeling Sick</option>
+    <option value="was_late">Was Late</option>
+    <option value="need_extension">Need Extension</option>
+  </select>
+
+  <label for="tone">Pick a tone</label>
+  <select id="tone">
+    <option value="formal">Formal</option>
+    <option value="funny">Funny</option>
+    <option value="emotional">Emotional</option>
+    <option value="smart">Smart & Polite</option>
+  </select>
+
+  <button id="generateBtn">Generate Excuse</button>
+
+  <div id="output" aria-live="polite"></div>
+</main>
+
+<footer>
+  Made for students who need a little creative help. &copy; 2025
+</footer>
+
+<script>
+  const excuses = {
+    missed_homework: {
+      formal: `Dear Teacher,\n\nI apologize for not completing the homework due tomorrow. I experienced unexpected circumstances that required my attention. I assure you it will be submitted as soon as possible.\n\nThank you for understanding.`,
+      funny: `Sorry, my dog ate my homework. No, seriously, I think it’s stuck somewhere between his stomach and regret.`,
+      emotional: `I really wanted to do it, but I’ve been feeling overwhelmed lately and just couldn’t focus. I hope you can understand.`,
+      smart: `Due to unforeseen time constraints and prioritizing other academic commitments, I was unable to complete the homework. I appreciate your understanding.`,
+    },
+    missed_class: {
+      formal: `Dear Teacher,\n\nI was unable to attend class due to personal reasons. I will make sure to catch up on all materials missed.\n\nThank you for your consideration.`,
+      funny: `I missed class because I was abducted by aliens. They said hi and promised to bring me back on time next class.`,
+      emotional: `I wasn’t feeling well and needed some time to rest. I hope to join back soon.\n\nThank you for understanding.`,
+      smart: `An unforeseen circumstance prevented my attendance. I will review all the class materials to stay updated.`,
+    },
+    late_submission: {
+      formal: `Dear Teacher,\n\nI apologize for the late submission. I encountered technical difficulties that delayed my work. I will submit it immediately.\n\nThank you for your patience.`,
+      funny: `I submitted my work late because my WiFi went on vacation without telling me.`,
+      emotional: `I’ve been struggling emotionally and wasn’t able to finish on time. I hope you understand.\n\nThank you.`,
+      smart: `Due to unexpected technical issues, I could not submit my work on time. I appreciate your understanding.`,
+    },
+    group_member_didnt_work: {
+      formal: `Dear Team,\n\nI wanted to inform you that one of our group members did not contribute to the project. I hope we can resolve this issue together.\n\nThank you.`,
+      funny: `Our group member ghosted us like a haunted house. I'm still waiting for their part!`,
+      emotional: `It’s been difficult carrying the group alone. I hope we can find a way to work better as a team.`,
+      smart: `One member of our group failed to meet their responsibilities, which impacted our progress. Please advise on next steps.`,
+    },
+    sick: {
+      formal: `Dear Teacher,\n\nI have been feeling unwell and unable to complete the work. I will submit it as soon as I am able.\n\nThank you for understanding.`,
+      funny: `I was sick, but I promise I didn’t binge-watch an entire series while ‘resting’.`,
+      emotional: `I’ve been really under the weather and struggled to focus. Thanks for your patience.`,
+      smart: `Due to illness, I was unable to complete the assignment on time. I appreciate your consideration.`,
+    },
+    was_late: {
+      formal: `Dear Teacher,\n\nI apologize for being late. Unexpected circumstances delayed me. I will ensure it does not happen again.\n\nThank you for your understanding.`,
+      funny: `I was late because traffic was caused by a parade of ducks crossing the street. Quack happens!`,
+      emotional: `I lost track of time and feel bad for being late. I’ll do better.\n\nThanks for your patience.`,
+      smart: `Due to unforeseen delays, I arrived late. I will manage my time better moving forward.`,
+    },
+    need_extension: {
+      formal: `Dear Teacher,\n\nI kindly request an extension on the deadline due to unforeseen circumstances. I will submit as soon as possible.\n\nThank you for your understanding.`,
+      funny: `I need an extension because my brain decided to go on vacation without me.`,
+      emotional: `I’ve been going through a tough time and would appreciate extra time to complete the work.\n\nThank you.`,
+      smart: `Due to recent challenges, I respectfully request additional time to complete the assignment. Thank you for your consideration.`,
+    },
+  };
+
+  const excuseTypeSelect = document.getElementById('excuseType');
+  const toneSelect = document.getElementById('tone');
+  const outputDiv = document.getElementById('output');
+  const generateBtn = document.getElementById('generateBtn');
+
+  generateBtn.addEventListener('click', () => {
+    const type = excuseTypeSelect.value;
+    const tone = toneSelect.value;
+    const excuse = excuses[type][tone];
+    outputDiv.textContent = excuse;
+  });
+</script>
+
+</body>
+</html>
